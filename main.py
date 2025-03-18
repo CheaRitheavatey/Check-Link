@@ -1,13 +1,14 @@
 import requests
 import json
-
+import os
+from dotenv import load_dotenv
 def check_malicious_url(url):    
     # Google Safe Browsing API endpoint
     api_url = "https://safebrowsing.googleapis.com/v4/threatMatches:find"
     
     # Read API key
-    with open("api.txt", "r") as f:
-        api_key = f.read().strip()
+    load_dotenv()
+    api_key = os.getenv("password")
 
     # Request headers
     headers = {"Content-Type": "application/json"}

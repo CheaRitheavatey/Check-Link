@@ -1,6 +1,9 @@
 import tkinter as tk
 import requests
 from main import check_malicious_url
+import os
+from dotenv import load_dotenv
+
 
 class interface:
     def __init__(self):
@@ -37,8 +40,8 @@ class interface:
             api_url = "https://safebrowsing.googleapis.com/v4/threatMatches:find"
         
             # Read API key
-            with open("api.txt", "r") as f:
-                api_key = f.read().strip()
+            load_dotenv()
+            api_key = os.getenv('password')
 
             # Request headers
             headers = {"Content-Type": "application/json"}
